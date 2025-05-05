@@ -1,0 +1,68 @@
+Wrapper::constructor
+├── when called with address is passed
+│   ├── it deploys
+│   ├── it sets the approval to uniswap
+│   └── it sets the governor
+└── when passing an invalid address
+    └── it reverts
+
+Wrapper::setPairWrapper
+├── when called by the governor
+│   ├── when passing a valid address
+│   │   ├── it sets the pair wrapper
+│   │   └── it emits PairWrapperSet
+│   └── when passing an invalid address
+│       └── it reverts
+└── when called by a non-governor
+    └── it reverts
+
+Wrapper::setTokenWrapper
+├── when called by the governor
+│   ├── when passing a valid address
+│   │   ├── it sets the token wrapper
+│   │   └── it emits TokenWrapperSet
+│   └── when passing an invalid address
+│       └── it reverts
+└── when called by a non-governor
+    └── it reverts
+
+Wrapper::setDefaultWrapper
+├── when called by the governor
+│   ├── when passing a valid address
+│   │   ├── it sets the default wrapper
+│   │   └── it emits DefaultWrapperSet
+│   └── when passing an invalid address
+│       └── it reverts
+└── when called by a non-governor
+    └── it reverts
+
+Wrapper::getWrapper
+├── when called with a pair of tokens
+│   ├── when a pair wrapper is inputted
+│   │   └── it returns the pair wrapper
+│   ├── when a token wrapper is inputted
+│   │   └── it returns the token wrapper
+│   └── when no wrapper is inputted
+│       └── it returns the default wrapper
+ 
+Wrapper::getAmountOut
+├── when called with a pair 
+│   ├── when a pair wrapper is set
+│   │   └── it returns the amount out
+│   ├── when a token wrapper is set
+│   │   └── it returns the amount out
+│   └── when no wrapper is set
+│       └── it returns the amount out
+└── when called with an invalid pair
+    └── it reverts
+
+Wrapper::getBestAmountOut
+├── when called with a pair
+│   ├── when a pair wrapper is set
+│   │   └── it returns the best amount out
+│   ├── when a token wrapper is set
+│   │   └── it returns the best amount out
+│   └── when no wrapper is set
+│       └── it returns the best amount out
+└── when called with an invalid pair
+    └── it reverts
